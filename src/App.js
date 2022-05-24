@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Child from "./Child";
 
 function App() {
+  const [parentNum, setParentNum] = useState(0);
+  const [childNum, setChildNum] = useState(0);
+
+  const incrementParentNum = () => {
+    setParentNum((parentNum) => parentNum + 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="r-c-c container">
+      <div className="c-c-c parent">
+        <div className="c-c-c">
+          <h1>parent number: {parentNum}</h1>
+          <button onClick={incrementParentNum}>
+            Click to Increment parent number
+          </button>
+        </div>
+        <Child number={childNum} />
+      </div>
     </div>
   );
 }
